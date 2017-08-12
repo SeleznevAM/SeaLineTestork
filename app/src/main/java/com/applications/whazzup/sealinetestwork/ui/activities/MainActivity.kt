@@ -45,41 +45,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mockData() {
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №1"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Прогулка по городу"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Parish", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(50000000000L), "Выход №2"))
-        recyclerAdapter.addItem(EventClass(Date(60000000000L), Date(7000000L), "Поиграть в пейнбол"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Timbuktu", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №3"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Прогулка на велосипеде"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "USA", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №4"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "В поход"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Pekin", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №5"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Прыгнуть с парашютом"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Novgorod", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №6"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Сходить в театр"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Omsk", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №7"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Сплясать румбу"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Tomsk", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №8"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Рассказать анекдот"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Dusseldorf", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №9"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Покормить кота"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Obninsk", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №10"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Помыть машину"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Kaluga", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №11"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Сходить в барбершоп"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Rostov", 1.1))
-        recyclerAdapter.addItem(DataClass(Date(5000000L), "Выход №12"))
-        recyclerAdapter.addItem(EventClass(Date(6000000L), Date(7000000L), "Выспться"))
-        recyclerAdapter.addItem(MoveClass("Moscow", "Sochi", 1.1))
+
+        val min = 10
+        val max = 100
+        var result = min + ((Math.random()*(max - min)+1).toInt())
+        println(result)
+
+        for(i : Int in 1..result){
+            if(i%2==0){
+                recyclerAdapter.addItem(DataClass(Date(i*10000000L), "Выход №"+i))
+            }else
+            if(i%3==0){
+                recyclerAdapter.addItem(EventClass(Date(i*20000000L),Date(), "Задача №"+i))
+            }else {
+                recyclerAdapter.addItem(MoveClass("Место №" + i, "Место №" + i + 1, i + 0.14))
+            }
+        }
     }
 }
