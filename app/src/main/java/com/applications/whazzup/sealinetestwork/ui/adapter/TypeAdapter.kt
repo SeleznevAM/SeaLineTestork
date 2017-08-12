@@ -8,22 +8,13 @@ import android.widget.TextView
 import com.applications.whazzup.sealinetestwork.R
 import com.applications.whazzup.sealinetestwork.ui.adapter.adapterModel.Item
 
-class TypeAdapter : RecyclerView.Adapter<TypeAdapter.ViewHolder>(){
+class TypeAdapter(private val listener : ((Item)->Unit)) : RecyclerView.Adapter<TypeAdapter.ViewHolder>(){
 
-    var itemList : MutableList<Item> = mutableListOf()
-    lateinit var listener : ((Int) ->Unit)
+    private var itemList : MutableList<Item> = mutableListOf()
 
     fun addItem(item : Item){
         itemList.add(item)
         notifyDataSetChanged()
-    }
-
-    fun addListener(onClickListener : (Int)->Unit){
-        this.listener = onClickListener
-    }
-
-    fun getItemByPosition(position : Int) : Item{
-        return itemList[position]
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
@@ -34,7 +25,6 @@ class TypeAdapter : RecyclerView.Adapter<TypeAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val inflater : LayoutInflater = LayoutInflater.from(parent?.context)
         return ViewHolder(inflater.inflate(R.layout.recycler_item, parent, false), listener)
-
     }
 
     override fun getItemCount(): Int {
@@ -42,13 +32,13 @@ class TypeAdapter : RecyclerView.Adapter<TypeAdapter.ViewHolder>(){
     }
 
 
-    inner class ViewHolder(itemView : View, var listener : (Int) ->Unit) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
-
+    inner class ViewHolder(itemView : View, var listener : (Item) ->Unit) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
         override fun onClick(v: View?) {
-            listener.invoke(adapterPosition)
+            listener.invoke(itemList[adapterPosition])
         }
 
         var objText : TextView = itemView.findViewById(R.id.obj_info_tv) as TextView
+
         init{
             objText.setOnClickListener(this)
         }

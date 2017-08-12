@@ -4,6 +4,7 @@ import java.io.Serializable
 
 
 class MoveClass(var fromPlace: String,  var toPlace: String,  var estimateTime: Double) : Item, Serializable {
+
     override fun getInfoFromObject(): String {
         val buffer : StringBuffer = StringBuffer(this.javaClass.simpleName)
         buffer.append("\nfromPLace: ")

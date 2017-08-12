@@ -8,7 +8,7 @@ import java.util.*
 
 data class DataClass(var flightDate : Date, var gate: String)  : Item, Serializable{
 
-    val format : SimpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+    private val format : SimpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
 
     override fun getInfoFromObject(): String {
         val buffer : StringBuffer = StringBuffer(this.javaClass.simpleName)
