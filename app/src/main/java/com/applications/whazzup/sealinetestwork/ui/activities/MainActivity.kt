@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.LinearLayoutManager
 import com.applications.whazzup.sealinetestwork.R
-import butterknife.ButterKnife
 import com.applications.whazzup.sealinetestwork.ui.adapter.TypeAdapter
 import com.applications.whazzup.sealinetestwork.ui.adapter.adapterModel.DataClass
 import com.applications.whazzup.sealinetestwork.ui.adapter.adapterModel.EventClass
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ButterKnife.bind(this)
         initToolBar()
 
         val intent : Intent = Intent(this, SecondActivity :: class.java)

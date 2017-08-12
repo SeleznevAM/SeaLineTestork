@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v7.app.ActionBar
 import android.view.MenuItem
 import android.view.View
-import butterknife.ButterKnife
 import com.applications.whazzup.sealinetestwork.R
 import com.applications.whazzup.sealinetestwork.ui.adapter.adapterModel.DataClass
 import com.applications.whazzup.sealinetestwork.ui.adapter.adapterModel.EventClass
@@ -24,7 +23,6 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        ButterKnife.bind(this)
         initToolBar()
         var i :  Item = intent.getSerializableExtra("ITEM_KEY") as Item
         when(i){
